@@ -25,16 +25,18 @@
             <li class="nav-item">
               <a class="nav-link" href="/backOffice.html">Backoffice</a>
             </li>
-                       
+                  
           </ul>
+          </div>
           
       </nav>
 
-        <!-- 'Add product' -->
+      <!-- <img src=""
+      alt="Event picture" width="100%" style="height: 30vh; object-fit: cover;"> -->
       <div class="container mt-5" style="width: 30%;">
    
         <form class="productInfo">
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="name">Name</label>
               <input type="text" class="form-control" id="name" required>
             </div>
@@ -54,10 +56,41 @@
                 <label for="price">Price</label>
                 <input class="form-control" type="number" class="form-control" id="price" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button> -->
           </form>
 </div>
- </div>
 </body>
-<script src="/app.js"></script>
+<script>
+
+    const productId = new URLSearchParams(location.search).get('id')
+        console.log(productId)
+
+    const url = "https://striveschool-api.herokuapp.com/api/product/"
+    const form = document.querySelector('.productInfo')
+    
+    window.onload =  async() => {
+     
+            const response = await fetch(url + productId, {
+           headers: {
+       "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYjZlNjRjZmY1ZjAwMTU5MGJkYzciLCJpYXQiOjE2Mzg5NzExNjAsImV4cCI6MTY0MDE4MDc2MH0.3SKwQ-G9SnWsRu2xchG_dvAv8ZSkK4A6drgTORblK5E"
+      
+                 },
+            })
+         
+            if(response.ok){
+
+                const productData =  await response.json()
+                console.log(productData)
+            }
+
+            const {name, description, brand, imgUrl, price} = productData 
+
+            console.log(productData)
+
+
+    }
+ 
+
+
+</script>
 </html>

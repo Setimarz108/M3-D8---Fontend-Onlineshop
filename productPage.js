@@ -1,4 +1,8 @@
 // fetching data
+  
+const id = new URLSearchParams(location.search).get('eventId')
+console.log(id)
+
 
 const getProducts = async () => {
 
