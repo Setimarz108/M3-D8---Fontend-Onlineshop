@@ -1,4 +1,4 @@
-// fetching data
+
   
 const id = new URLSearchParams(location.search).get('eventId')
 console.log(id)
@@ -44,11 +44,13 @@ const showProducts = (data) => {
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Brand : ${item.brand}</li>
+              <br>
               <li class="list-group-item">Price : ${item.price}</li>
             </ul>
             <div class="card-body">
                 <a class='btn  mr-5' style="background-color:#59d9bf">Add to Cart</a>
                 <a class='btn btn-warning'>Buy</a>
+                <a href='/details.html?id=${item._id}'>Edit</a>
             </div>
         </div>`
 

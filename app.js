@@ -1,11 +1,5 @@
 
-        // const name = document.getElementById('name')
-        // const description = document.getElementById('Description')
-        // const brand = document.getElementById('brand')
-        // const price = document.getElementById('price')
-
-
-
+       
 
 const getData = async () =>{
 

@@ -33,40 +33,32 @@
 
       <!-- <img src=""
       alt="Event picture" width="100%" style="height: 30vh; object-fit: cover;"> -->
-      <div class="container mt-5" style="width: 30%;">
-   
-        <form class="productInfo">
-            <!-- <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" required>
+      <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h4 class="mt-5 mb-3">Product Details</h4>
+                 <div id="details" class="d-flex flex-column ">
+                  <!--  <div class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div> -->
+                    <!-- <h1 class="font-weight-bold">Product</h1>
+                    <input type="text"><p>name</p></div>
+                    <p>description</p>
+                     <p>brand</p>
+                      <p>imgURl</p>
+                       <p>price</p>    
+                     <button class="btn btn-success mt-3" sty>EDIT EVENT</button> --> 
+                </div>
             </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control"  id="description" placeholder="Write product description..." required></textarea >
-            </div>
-            <div class="form-group">
-              <label for="brand">Brand</label>
-              <input class="form-control" type="text" class="form-control" id="brand" required>
-            </div>
-            <div class="form-group">
-                <label for="imageUrl">imageUrl</label>
-                <input class="form-control" type="url" class="form-control" id="imageUrl" required>
-            </div>
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input class="form-control" type="number" class="form-control" id="price" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button> -->
-          </form>
-</div>
+        </div>
 </body>
 <script>
 
-    const productId = new URLSearchParams(location.search).get('id')
+    const productId = new URLSearchParams(window.location.search).get('id')
         console.log(productId)
 
     const url = "https://striveschool-api.herokuapp.com/api/product/"
-    const form = document.querySelector('.productInfo')
+    
     
     window.onload =  async() => {
      
@@ -76,17 +68,27 @@
       
                  },
             })
-         
+         const form = document.querySelector('#details')
             if(response.ok){
 
                 const productData =  await response.json()
                 console.log(productData)
-            }
+           
 
             const {name, description, brand, imgUrl, price} = productData 
 
             console.log(productData)
 
+            form.innerHTML = `
+
+                    <p>${name}</p>
+                    <p>${description}</p>
+                     <p>${brand}</p>
+                      <p>${imgUrl}</p>
+                       <p>${price}</p>     
+                     <button class="btn btn-success mt-3" style="width:60px;">EDIT EVENT</button> 
+            
+            ` }
 
     }
  
